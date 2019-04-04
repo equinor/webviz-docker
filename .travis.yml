@@ -17,6 +17,8 @@ before_install:
 install:
   - pip install docker pytest
 
+script: pytest
+
 deploy:
   provider: script
   script: bash deploy_docker_image.sh
