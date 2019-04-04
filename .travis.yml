@@ -14,6 +14,9 @@ env:
 before_install:
   - docker build -t webviz/base_image:alpha-test .
 
+install:
+  - pip install docker pytest
+
 deploy:
   provider: script
   script: bash deploy_docker_image.sh
