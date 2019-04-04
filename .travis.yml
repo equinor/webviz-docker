@@ -1,5 +1,16 @@
 services:
-  - docker
+- docker
+
+env:
+  global:
+    - DOCKER_USERNAME=webviz
+    - secure: a86qzNbAd8Ej9vo3Z/KwEls7LmznAGJl9K1Y+bc1DfsMq+nCyrlilEbOwjXGOV91KIhfTgGWBdZHHiodUX0oxCNO7ZZVnUHRwdj53cU3BCHF1oCX0hKufZq413bAGS5cp9hMf75r92LeHIbysvQUFZSSwEV3bX6vvtEYt5F91hkQ/qC5ligieoS4HuOGi47Pl1fCOWZQkMZjXbIleE5u3QpbRC+Mo1HaV69wblFXzzsOrHh/Cx+S8puIYvQvrDq4FQLpfyWyLRLyov/BC2UzbqtL/PfQWc2VWtQFsu2DTMZQMcwcBT0aBkepKgXs985tmWDIIBd4076Rycy0EsuGnQCu3LS+08GaWwZm9VPQBzLFPx+RCsukatBoKe5H0ySecIUm6STQjxsXH8pmwjo6wuoOh0miqdfZPQDMQOcYMo2C9T6j/T6Mgh+c7hcMM47G5rR7y75x0Nh5vXJZdlwdAKzHXz+YtvCvJF0D15WHB84q79lk/mIGeWTdzvCibcsQ7PV7yOmjiPVWjL05i2RbfQ7Rx6wiBX0i1z4eUoztEgq5bMB42ohUBnmPW2uqahuRyRFVQFeVEj3XYh8qchlwoUU4zHsQAWuXC5xIL3XNYPAg80e9ag9pSpnqvR5Y6EyfUmcfvqF10HaLX50X8XLl3mZLnv2wyCEZF0FuxXuUnM4=
 
 before_install:
-  - docker build -t webviz/base_image .
+  - docker build -t webviz/base_image:alpha-test .
+
+deploy:
+  provider: script
+  script: bash deploy_docker_image.sh
+  on:
+    branch: master
