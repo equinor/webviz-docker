@@ -10,6 +10,7 @@ RUN pip install webviz-config #webviz-subsurface
 
 # Change from full plotly bundle to one not depending on javascript eval.
 # See https://github.com/plotly/dash-core-components/issues/462 for details.
+
 ENV DCC_DIR='/usr/local/lib/python3.7/site-packages/dash_core_components'
 RUN PLOTLY_VERSION=`ls $DCC_DIR/plotly-*.min.js | egrep -o '[0-9]+.[0-9]+.[0-9]+'` \
     && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \

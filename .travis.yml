@@ -4,7 +4,7 @@ python:
   - "3.6"
 
 services:
-- docker
+  - docker
 
 env:
   global:
@@ -15,10 +15,11 @@ install:
   - pip install docker pytest
 
 script:
-  - docker build -t webviz/base_image:alpha-test .
+  - docker build -t webviz/base_image .
 
 deploy:
   provider: script
   script: bash deploy_docker_image.sh
+  skip_cleanup: true
   on:
-    branch: master
+    tags: true
