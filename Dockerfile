@@ -6,7 +6,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 RUN pip install -U pip
 
-RUN pip install webviz-config #webviz-subsurface 
+RUN pip install webviz-config webviz-subsurface
 
 # Change from full plotly bundle to one not depending on javascript eval.
 # See https://github.com/plotly/dash-core-components/issues/462 for details.
