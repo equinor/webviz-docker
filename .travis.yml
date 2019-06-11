@@ -16,6 +16,7 @@ install:
 
 script:
   - docker build -t webviz/base_image .
+  - docker image ls
 
 deploy:
   provider: script
