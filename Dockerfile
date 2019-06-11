@@ -22,12 +22,10 @@ RUN pip install --upgrade pip webviz-config webviz-subsurface --no-cache-dir \
 # Prepare for adding the webviz instance app #
 ##############################################
 
-ENV LISTEN_PORT=5000
+ENV LISTEN_PORT=5000 UWSGI_INI=/uwsgi.ini STATIC_URL=/dash_app/assets
+
 EXPOSE 5000
 
 COPY uwsgi.ini /
-
-ENV UWSGI_INI /uwsgi.ini
-ENV STATIC_URL /dash_app/assets
 
 WORKDIR /dash_app
