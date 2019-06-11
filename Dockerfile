@@ -11,9 +11,8 @@ FROM tiangolo/uwsgi-nginx-flask:python3.7
 # When docker build squash argument is not experimental, the commands can
 # be split out without increasing image size.
 
-ENV DCC_DIR='/usr/local/lib/python3.7/site-packages/dash_core_components'
-
 RUN pip install --upgrade pip webviz-config webviz-subsurface --no-cache-dir \
+    && DCC_DIR='/usr/local/lib/python3.7/site-packages/dash_core_components' \
     && PLOTLY_VERSION=`ls $DCC_DIR/plotly-*.min.js | egrep -o '[0-9]+.[0-9]+.[0-9]+'` \
     && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \
     && mv plotly-cartesian.min.js $DCC_DIR/plotly-cartesian-$PLOTLY_VERSION.min.js \
