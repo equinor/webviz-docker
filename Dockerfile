@@ -20,7 +20,7 @@ RUN apt-get update \
          flask \
          webviz-config \
          webviz-subsurface \ 
-    && PLOTLY_VERSION=`ls $DCC_DIR/plotly-*.min.js | egrep -o "[0-9]+.[0-9]+.[0-9]+"` \
+    && PLOTLY_VERSION=$(find $DCC_DIR -maxdepth 1 -name 'plotly-*.min.js' | grep -oE "[0-9]+.[0-9]+.[0-9]+") \
     && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \
     && mv plotly-cartesian.min.js $DCC_DIR/plotly-cartesian-$PLOTLY_VERSION.min.js \
     && sed -i "s/plotly-$PLOTLY_VERSION.min.js/plotly-cartesian-$PLOTLY_VERSION.min.js/g" $DCC_DIR/__init__.py \
@@ -33,6 +33,7 @@ RUN apt-get update \
          libc6-dev \
     && apt-get autoremove -y \
     && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && useradd --create-home appuser
 
 WORKDIR /home/appuser
