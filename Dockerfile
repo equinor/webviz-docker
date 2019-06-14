@@ -6,8 +6,6 @@ EXPOSE 5000
 
 ENV DCC_DIR="/usr/local/lib/python3.7/site-packages/dash_core_components"
 
-COPY . .
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
          wget \
@@ -34,8 +32,14 @@ RUN apt-get update \
          libc-dev-bin \
          libc6-dev \
     && apt-get autoremove -y \
-    && apt-get clean
+    && apt-get clean \
+    && useradd --create-home appuser
+
+WORKDIR /home/appuser
+USER appuser
+
+COPY --chown=appuser . .
 
 CMD gunicorn \
-      --config="/gunicorn_conf.py" \
+      --config="./gunicorn_conf.py" \
       "dash_app.webviz_app:server"
