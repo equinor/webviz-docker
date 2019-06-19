@@ -15,11 +15,10 @@ RUN apt-get update \
          libc-dev-bin \
          libc6-dev \
     && pip install --no-cache-dir \
-         meinheld \
-         gunicorn \
-         flask \
          webviz-config \
          webviz-subsurface \ 
+         meinheld \
+         gunicorn \
     && PLOTLY_VERSION=$(find $DCC_DIR -maxdepth 1 -name 'plotly-*.min.js' | grep -oE "[0-9]+.[0-9]+.[0-9]+") \
     && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \
     && mv plotly-cartesian.min.js $DCC_DIR/plotly-cartesian-$PLOTLY_VERSION.min.js \
