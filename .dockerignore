@@ -1,0 +1,6 @@
+.dockerignore
+.travis.yml
+deploy_docker_image.sh
+Dockerfile
+LICENSE
+README.md
