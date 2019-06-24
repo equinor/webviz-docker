@@ -4,6 +4,8 @@ LABEL maintainer="Equinor R&T"
 
 EXPOSE 5000
 
+ARG PIP_PACKAGES
+
 ENV DCC_DIR="/usr/local/lib/python3.7/site-packages/dash_core_components"
 
 RUN apt-get update \
@@ -14,11 +16,7 @@ RUN apt-get update \
          gcc-6 \
          libc-dev-bin \
          libc6-dev \
-    && pip install --no-cache-dir \
-         webviz-config \
-         webviz-subsurface \ 
-         meinheld \
-         gunicorn \
+    && pip install --no-cache-dir $PIP_PACKAGES \
     && PLOTLY_VERSION=$(find $DCC_DIR -maxdepth 1 -name 'plotly-*.min.js' | grep -oE "[0-9]+.[0-9]+.[0-9]+") \
     && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \
     && mv plotly-cartesian.min.js $DCC_DIR/plotly-cartesian-$PLOTLY_VERSION.min.js \
