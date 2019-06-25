@@ -8,7 +8,7 @@
 
 This repository is building and deploying a
 [`webviz-config`](https://github.com/equinor/webviz-config) Docker base image
-to the [webviz Dockerhub repository](https://hub.docker.com/u/webviz).
+to the [Dockerhub webviz repository](https://hub.docker.com/u/webviz).
 
 Every time a new tag is released in this repository, the base image on
 Dockerhub will be updated, which then can be used by `webviz-config`.
