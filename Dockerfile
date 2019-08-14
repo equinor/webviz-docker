@@ -12,8 +12,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
          wget \
          gcc \
-         libgcc-6-dev \
-         gcc-6 \
+         libgcc-8-dev \
+         gcc-8 \
          libc-dev-bin \
          libc6-dev \
     && pip install --no-cache-dir $PIP_PACKAGES \
