@@ -24,8 +24,8 @@ RUN apt-get update \
     && apt-get purge -y \
          wget \
          gcc \
-         libgcc-6-dev \
-         gcc-6 \
+         libgcc-8-dev \
+         gcc-8 \
          libc-dev-bin \
          libc6-dev \
     && apt-get autoremove -y \
