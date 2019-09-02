@@ -6,8 +6,6 @@ EXPOSE 5000
 
 ARG PIP_PACKAGES
 
-ENV DCC_DIR="/usr/local/lib/python3.7/site-packages/dash_core_components"
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
          wget \
@@ -17,10 +15,6 @@ RUN apt-get update \
          libc-dev-bin \
          libc6-dev \
     && pip install --no-cache-dir $PIP_PACKAGES \
-    && PLOTLY_VERSION=$(find $DCC_DIR -maxdepth 1 -name 'plotly-*.min.js' | grep -oE "[0-9]+.[0-9]+.[0-9]+") \
-    && wget https://github.com/plotly/plotly.js/raw/v$PLOTLY_VERSION/dist/plotly-cartesian.min.js \
-    && mv plotly-cartesian.min.js $DCC_DIR/plotly-cartesian-$PLOTLY_VERSION.min.js \
-    && sed -i "s/plotly-$PLOTLY_VERSION.min.js/plotly-cartesian-$PLOTLY_VERSION.min.js/g" $DCC_DIR/__init__.py \
     && apt-get purge -y \
          wget \
          gcc \
