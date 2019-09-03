@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 WEBVIZ_CONFIG_VERSION=$(python -c "import webviz_config; print(webviz_config.__version__)")
 
 git clone https://github.com/equinor/webviz-config.git
