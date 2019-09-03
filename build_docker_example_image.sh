@@ -14,5 +14,5 @@ webviz certificate
 webviz build webviz-config/examples/basic_example.yaml --portable ./example_app
 
 pushd example_app
-docker build -t webviz/example_image
+docker build -t webviz/example_image .
 popd
