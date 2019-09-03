@@ -21,11 +21,8 @@ install:
   - pip install webviz-config
 
 script:
-  - bash build_docker_image.sh
-  - git clone https://github.com/equinor/webviz-config.git
-  - webviz certificate
-  - webviz build webviz-config/examples/basic_example.yaml --portable ./example_app
-  - pushd example_app; docker build -t webviz/example_image .; popd
+  - bash build_docker_base_image.sh
+  - bash build_docker_example_image.sh
   - docker image ls --all
 
 deploy:
