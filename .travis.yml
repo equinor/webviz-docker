@@ -22,12 +22,12 @@ install:
 
 script:
   - bash build_docker_base_image.sh
-  - #bash build_docker_example_image.sh
+  - bash build_docker_example_image.sh
   - docker image ls --all
 
 deploy:
   provider: script
-  script: bash deploy_docker_image.sh
+  script: bash deploy_docker_images.sh
   skip_cleanup: true
   on:
     tags: true
