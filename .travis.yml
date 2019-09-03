@@ -22,7 +22,7 @@ install:
 
 script:
   - bash build_docker_base_image.sh
-  - bash build_docker_example_image.sh
+  - #bash build_docker_example_image.sh
   - docker image ls --all
 
 deploy:
