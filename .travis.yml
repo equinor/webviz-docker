@@ -16,6 +16,7 @@ install:
 
 script:
   - bash build_docker_image.sh
+  - docker image ls --all
 
 deploy:
   provider: script
