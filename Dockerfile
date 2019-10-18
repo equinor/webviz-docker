@@ -14,6 +14,7 @@ RUN apt-get update \
          gcc-8 \
          libc-dev-bin \
          libc6-dev \
+         git \
     && pip install --no-cache-dir $PIP_PACKAGES \
     && apt-get purge -y \
          wget \
