@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/equinor/webviz-docker/workflows/docker/badge.svg)](https://github.com/equinor/webviz-docker/actions?query=branch%3Amaster)
+![webviz-docker](https://github.com/equinor/webviz-docker/workflows/webviz-docker/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/19233b7ef4ce43199ffd7b0cf9e41e66)](https://www.codacy.com/app/anders-kiaer/webviz-docker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=equinor/webviz-docker&amp;utm_campaign=Badge_Grade)
 ![Docker Pulls](https://img.shields.io/docker/pulls/webviz/base_image.svg)
 ![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/webviz/base_image/latest.svg)
