@@ -1,4 +1,0 @@
-webviz-config>=0.0.17
-webviz-subsurface>=0.0.11
-meinheld~=1.0
-gunicorn~=19.9
