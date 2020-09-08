@@ -1,11 +1,16 @@
 FROM python:3.7-slim
 # TODO: Choose base image based on Python minor system used by user
 
-LABEL maintainer="Equinor"
-
 EXPOSE 5000
 
-RUN useradd --create-home appuser
+# TODO: Only install git when actually needed by one or more plugin projects
+RUN useradd --create-home appuser \
+        && apt-get update \
+        && apt-get install -y --no-install-recommends git \
+        && apt-get purge -y --auto-remove \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /home/appuser
 USER appuser
 
