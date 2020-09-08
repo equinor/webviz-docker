@@ -23,8 +23,15 @@ RUN pip install --no-cache-dir \
         webviz-config==0.* \
         webviz-subsurface==0.*
 
-COPY --chown=appuser . .
-
 CMD gunicorn \
-        --config="./gunicorn_conf.py" \
+        --access-logfile "-" \
+        --bind 0.0.0.0:5000 \
+        --keep-alive 120 \        
+        --max-requests 40 \
+        --preload \
+        --workers 10 \
+        --worker-class gthread \
+        --worker-tmp-dir /dev/shm \        
+        --threads 4 \
+        --timeout 100000 \
         "dash_app.webviz_app:server"
